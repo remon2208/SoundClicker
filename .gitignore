@@ -1,0 +1,13 @@
+# your own recordings and settings (created when you run from source)
+templates/
+sound_clicker_settings.json
+error_log.txt
+template.wav
+
+# build output
+build/
+dist/
+*.spec
+__pycache__/
+*.pyc
+.pytest_cache/
