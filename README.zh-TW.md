@@ -66,7 +66,7 @@ python SoundClicker.pyw
 ```
 
 想自己打包 exe 就執行 `build.bat`；測試用 `pip install pytest` 後執行 `python -m pytest`。
-每次推上 `v*` 標籤，GitHub Actions 會自動測試、打包並發佈到 [Releases](https://github.com/remon2208/SoundClicker/releases)。
+每次推送都會由 GitHub Actions 自動測試；`soundclicker/__init__.py` 裡的 `__version__` 一改，就會自動打包新版 exe 並發佈到 [Releases](https://github.com/remon2208/SoundClicker/releases)。
 
 ## 翻譯
 

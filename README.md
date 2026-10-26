@@ -66,7 +66,7 @@ python SoundClicker.pyw
 ```
 
 Build the .exe yourself with `build.bat`, run the tests with `pip install pytest` then `python -m pytest`.
-Every tag `v*` is built and tested by GitHub Actions and published on the [Releases](https://github.com/remon2208/SoundClicker/releases) page.
+GitHub Actions tests every push; when `__version__` in `soundclicker/__init__.py` changes, the new .exe is built and published on the [Releases](https://github.com/remon2208/SoundClicker/releases) page automatically.
 
 <details>
 <summary>How the detection works</summary>

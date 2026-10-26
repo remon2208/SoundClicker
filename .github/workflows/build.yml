@@ -52,11 +52,16 @@ jobs:
           name: SoundClicker-exe
           path: dist/SoundClicker.exe
 
-      - name: Publish release
-        if: startsWith(github.ref, 'refs/tags/v')
+      # A push to main publishes a release whenever soundclicker/__init__.py has a new __version__
+      - name: Publish release (new version only)
+        if: github.event_name == 'push'
         shell: pwsh
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          gh release create "${{ github.ref_name }}" dist/SoundClicker.exe `
-            --title "SoundClicker ${{ github.ref_name }}" --notes-file .github/release-notes.md
+          $tag = "v" + (python -c "import soundclicker; print(soundclicker.__version__)").Trim()
+          gh release view $tag *> $null
+          if ($LASTEXITCODE -eq 0) { Write-Host "$tag is already released"; exit 0 }
+          gh release create $tag dist/SoundClicker.exe --target $env:GITHUB_SHA `
+            --title "SoundClicker $tag" --notes-file .github/release-notes.md
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }

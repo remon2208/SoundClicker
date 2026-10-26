@@ -66,7 +66,7 @@ python SoundClicker.pyw
 ```
 
 exe を自分で作るには `build.bat`、テストは `pip install pytest` のあと `python -m pytest` です。
-`v*` タグを push すると GitHub Actions がテスト・ビルドし、[Releases](https://github.com/remon2208/SoundClicker/releases) に公開します。
+push のたびに GitHub Actions がテストし、`soundclicker/__init__.py` の `__version__` が変わると新しい exe を自動で [Releases](https://github.com/remon2208/SoundClicker/releases) に公開します。
 
 ## 翻訳
 
